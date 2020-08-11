@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="receipt")
-public class ReceiptEntity {
+public class ReceiptEntity extends BaseEntity {
 
 	@Column(name = "totalmoney")
 	private float totalMoney;

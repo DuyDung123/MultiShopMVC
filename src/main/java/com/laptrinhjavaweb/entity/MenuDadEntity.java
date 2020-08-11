@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="menudad")
-public class MenuDadEntity {
+public class MenuDadEntity extends BaseEntity {
 
 	@Column(name = "name")
 	private String name;

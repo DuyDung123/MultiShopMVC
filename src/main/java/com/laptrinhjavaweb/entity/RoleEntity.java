@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "role")
-public class RoleEntity {
+public class RoleEntity extends BaseEntity{
 
 	@Column(name = "name")
 	private String name;
