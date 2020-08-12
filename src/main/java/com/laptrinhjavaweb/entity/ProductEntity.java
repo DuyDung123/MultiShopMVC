@@ -44,10 +44,10 @@ public class ProductEntity extends BaseEntity {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "menuchildid")
-	private MenuChildEntity menuChild; 
+	private MenuChildEntity menuchild; 
 	
 	@OneToMany(mappedBy = "product")
-	private List<CartEntity> Carts = new ArrayList<CartEntity>();
+	private List<CartEntity> Carts = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -122,11 +122,11 @@ public class ProductEntity extends BaseEntity {
 	}
 	
 	public MenuChildEntity getMenuChild() {
-		return menuChild;
+		return menuchild;
 	}
 	
 	public void setMenuChild(MenuChildEntity menuChild) {
-		this.menuChild = menuChild;
+		this.menuchild = menuChild;
 	}
 
 	public List<CartEntity> getCarts() {

@@ -19,7 +19,7 @@ public class MenuDadEntity extends BaseEntity {
 	private String code;
 	
 	@OneToMany(mappedBy = "menudad")
-	private List<MenuChildEntity> menuChilds = new ArrayList<MenuChildEntity>();
+	private List<MenuChildEntity> menuChilds = new ArrayList<>();
 	
 	public String getName() {
 		return name;
