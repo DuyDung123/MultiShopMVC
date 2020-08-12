@@ -30,7 +30,20 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
+    
+     <!-- sitemesh filter (xem video phàn template) upline giao diện cho web-->
+     <!-- khai báo 4 chỗ là thư viện sitemesh(pom.xml),file decorator(web-inf), path template(dispatcher-servlet.xml), và phần ở chỗ này-->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+	<!-- đến chỗ này-->
     <session-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
