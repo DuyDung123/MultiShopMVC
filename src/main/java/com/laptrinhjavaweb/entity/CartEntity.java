@@ -21,7 +21,7 @@ public class CartEntity extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Productid")
-	private ProductEntity Products;
+	private ProductEntity product;
 	
 	@OneToMany(mappedBy = "cart")
 	private List<ReceiptEntity> receipts = new ArrayList<>();
@@ -49,11 +49,11 @@ public class CartEntity extends BaseEntity {
 	}
 
 	public ProductEntity getProducts() {
-		return Products;
+		return product;
 	}
 
 	public void setProducts(ProductEntity products) {
-		Products = products;
+		product = products;
 	}
 
 	public List<ReceiptEntity> getReceipts() {
