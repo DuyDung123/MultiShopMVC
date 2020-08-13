@@ -1,3 +1,4 @@
+<%@include file="/common/taglib.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -92,6 +93,12 @@
 
 		</div>
 		<!-- /.row -->
+		<h1>Menu Dad</h1>
+		<c:forEach var="item" items="${model.listResult}">
+			<div>${item.id}</div><br>
+			<div>${item.code}</div><br>
+			<div>${item.name}</div><br>
+		</c:forEach>
 
 	</div>
 	<!-- /.container -->
