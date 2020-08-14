@@ -36,5 +36,18 @@ public class MenuDadService implements IMenuDadService{
 		MenuDadEntity dadEntity = dadRepository.findOne(id);
 		return (MenuDadModel) menuDadConverter.toModel(dadEntity);
 	}
+
+	@Override
+	public MenuDadModel save(MenuDadModel menuDadModel) {
+		MenuDadEntity dadEntity = new MenuDadEntity();
+		if(menuDadModel.getId() != null) {
+			MenuDadEntity lodDadEntity = dadRepository.findOne(menuDadModel.getId());
+			dadEntity = menuDadConverter.toEntity(menuDadModel, lodDadEntity);
+		}else {
+			dadEntity = menuDadConverter.toEntity(menuDadModel);
+		}
+		dadEntity = dadRepository.save(dadEntity);
+		return menuDadConverter.toModel(dadEntity);
+	}
 	
 }

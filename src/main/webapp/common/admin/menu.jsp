@@ -38,15 +38,15 @@
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"></span>
-                Quản lý bài viết
+                Quản lý danh mục
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href="<c:url value='#'></c:url>">
+                    <a href="<c:url value='/admin/menu/list'></c:url>">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        DS bài viết
+                        DS Menu
                     </a>
                     <b class="arrow"></b>
                 </li>
