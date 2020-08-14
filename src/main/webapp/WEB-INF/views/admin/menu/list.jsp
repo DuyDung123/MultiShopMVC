@@ -97,8 +97,7 @@
 		</form>
 	</div>
 	<!-- /.main-content -->
-	<script>
-	</script>
+	<!-- Button trigger modal -->
 </body>
 
 </html>

@@ -8,4 +8,5 @@ public interface IMenuDadService {
 
 	List<MenuDadModel> findAll();
 	MenuDadModel findOne(Long id);
+	MenuDadModel save(MenuDadModel menuDadModel);
 }

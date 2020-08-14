@@ -1,8 +1,5 @@
 package com.laptrinhjavaweb.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import com.laptrinhjavaweb.entity.MenuDadEntity;
@@ -20,6 +17,13 @@ public class MenuDadConverter implements IConvert<MenuDadModel, MenuDadEntity> {
 	}
 
 	@Override
+	public MenuDadEntity toEntity(MenuDadModel model, MenuDadEntity entity) {
+		entity.setName(model.getName());
+		entity.setCode(model.getCode());
+		return entity;
+	}
+	
+	@Override
 	public MenuDadModel toModel(MenuDadEntity entity) {
 			MenuDadModel dadModel = new  MenuDadModel();
 			if(entity.getId() != null) {
@@ -33,4 +37,5 @@ public class MenuDadConverter implements IConvert<MenuDadModel, MenuDadEntity> {
 			dadModel.setModifiedBy(entity.getModifiedBy());
 		return dadModel;
 	}
+
 }

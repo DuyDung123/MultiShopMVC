@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface IConvert<T,E> {
 	E toEntity (T model);
+	E toEntity (T model, E entity);
 	T toModel(E entity);
 }
