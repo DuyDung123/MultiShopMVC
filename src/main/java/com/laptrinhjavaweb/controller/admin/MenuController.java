@@ -27,21 +27,24 @@ public class MenuController {
 	
 	@RequestMapping(value = "/admin/menu/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
-		String view ="";
-		if(menuDadModel.getId() != null && menuDadModel.getName() != "" && menuDadModel.getCode() != "") {
+		if(menuDadModel.getId() !=null) {
+			menuDadModel = menuDadService.findOne(menuDadModel.getId());
+		}
+		ModelAndView mav = new ModelAndView("admin/menu/edit");
+		mav.addObject("model",menuDadModel);
+		return mav;
+	}
+	@RequestMapping(value = "/admin/menu/update", method = RequestMethod.POST)
+	public ModelAndView save(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
+		String view = "";
 			menuDadModel = menuDadService.save(menuDadModel);
 			if(menuDadModel.getId() != null) {
-				view ="admin/menu/edit";
+				menuDadModel = menuDadService.findOne(menuDadModel.getId());
+				view = "admin/menu/edit";
 			}else if(menuDadModel.getId() == null) {
-				view ="admin/menu/list";
+				menuDadModel.setListResult(menuDadService.findAll());
+				view = "admin/menu/list";
 			}
-		}else if(menuDadModel.getId() != null){
-			menuDadModel = menuDadService.findOne(menuDadModel.getId());
-			view ="admin/menu/edit";
-		}
-		else if(menuDadModel.getId() == null){
-			view ="admin/menu/edit";
-		}
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("model",menuDadModel);
 		return mav;
