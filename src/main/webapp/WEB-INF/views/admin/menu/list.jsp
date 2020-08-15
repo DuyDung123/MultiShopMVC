@@ -12,92 +12,52 @@
 </head>
 
 <body>
-	<div class="main-content">
-		<form action="#" id="formSubmit" method="get">
-			<div class="main-content-inner">
-				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-					<ul class="breadcrumb">
-						<li>
-							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="#">Trang chủ</a>
-						</li>
-					</ul>
-					<!-- /.breadcrumb -->
+	<main>
+		<div class="container-fluid">
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-table mr-1"></i>
+					DataTable Menu
 				</div>
-				<div class="page-content">
-					<div class="row">
-						<div class="col-xs-12">
-							<c:if test="${not empty messageResponse}">
-								<div class="alert alert-${alert}">
-									${messageResponse}
-								</div>
-							</c:if>
-							<div class="widget-box table-filter">
-								<div class="table-btn-controls">
-									<div class="pull-right tableTools-container">
-										<div class="dt-buttons btn-overlap btn-group">
-											<a flag="info"
-												class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-												data-toggle="tooltip" title='Thêm menu' href='<c:url value="/admin/menu/edit"/>'>
-												<span>
-													<i class="fa fa-plus-circle bigger-110 purple"></i>
-												</span>
-											</a>
-											<button id="btnDelete" type="button"
-												class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-												data-toggle="tooltip" title='Xóa menu'>
-												<span>
-													<i class="fa fa-trash-o bigger-110 pink"></i>
-												</span>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="table-responsive">
-										<table class="table table-bordered">
-											<thead>
-												<tr>
-													<th><input type="checkbox" id="checkAll"></th>
-													<th>Tên Menu</th>
-													<th>code</th>
-													<th>Thao tác</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="item" items="${model.listResult}">
-													<tr>
-														<td><input type="checkbox" id="checkbox_${item.id}"
-																value="${item.id}"></td>
-														<td>${item.name}</td>
-														<td>${item.code}</td>
-														<td>
-															<c:url var="editURL" value="/admin/menu/edit">
-																<c:param name="id" value="${item.id}" />
-															</c:url>
-															<a class="btn btn-sm btn-primary btn-edit"
-																data-toggle="tooltip" title="Cập nhật menu"
-																href='${editURL}'><i class="fa fa-pencil-square-o"
-																	aria-hidden="true"></i>
-															</a>
-														</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<th><input type="checkbox" id="checkAll"></th>
+								<th>Tên Menu</th>
+								<th>code</th>
+								<th>Thao tác</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<th><input type="checkbox" id="checkAll"></th>
+								<th>Tên Menu</th>
+								<th>code</th>
+								<th>Thao tác</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<c:forEach var="item" items="${model.listResult}">
+									<tr>
+										<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
+										<td>${item.name}</td>
+										<td>${item.code}</td>
+										<td>
+											<c:url var="editURL" value="/admin/menu/edit">
+												<c:param name="id" value="${item.id}" />
+											</c:url>
+											<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
+												title="Cập nhật menu" href='${editURL}'><i class="fas fa-pencil-alt"></i>											</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
-		</form>
-	</div>
-	<!-- /.main-content -->
-	<!-- Button trigger modal -->
+		</div>
+	</main>
 </body>
 
 </html>

@@ -2,61 +2,44 @@
 <%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title><dec:title default="Trang chủ" /></title>
-	<link rel="stylesheet" href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='/template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace.min.css' />" class="ace-main-stylesheet" id="main-ace-style" />
-    <script src="<c:url value='/template/admin/assets/js/ace-extra.min.js' />"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type='text/javascript' src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
-    <script src="<c:url value='/template/admin/assets/js/jquery.2.1.1.min.js' />"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
-<%--     <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script> --%>
-    
-<%--     <script src="<c:url value='/ckeditor/ckeditor.js' />"></script> --%>
-<body class="no-skin">
+	<title>
+		<dec:title default="Trang chủ" />
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+	<link href="<c:url value='/template/admin/css/styles.css'/>" rel="stylesheet" />
+	<%--     <script src="<c:url value='/template/admin/paging/jquery.twbsPagination.js'/>"></script> --%>
+	<%--     <script src="<c:url value='/ckeditor/ckeditor.js' />"></script> --%>
+</head>
+
+<body class="sb-nav-fixed">
+
 	<!-- header -->
-    <%@ include file="/common/admin/header.jsp" %>
-    <!-- header -->
-	
-	<div class="main-container" id="main-container">
-		<script type="text/javascript">
-				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-		</script>
+	<%@ include file="/common/admin/header.jsp" %>
+	<!-- header -->
+
+	<div id="layoutSidenav">
 		<!-- menu -->
-    	<%@ include file="/common/admin/menu.jsp" %>
-    	<!-- menu -->
-		
-		<dec:body/>
-		
-		<!-- footer -->
-    	<%@ include file="/common/admin/footer.jsp" %>
-    	<!-- footer -->
-    	
-    	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse display">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-		</a>
+		<%@ include file="/common/admin/menu.jsp" %>
+		<!-- menu -->
+		<div id="layoutSidenav_content">
+			<dec:body />
+			<!-- footer -->
+			<%@ include file="/common/admin/footer.jsp" %>
+			<!-- footer -->
+		</div>
 	</div>
-	
-	
-	<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.easypiechart.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.sparkline.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.flot.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.flot.pie.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.flot.resize.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/ace-elements.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/ace.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js'/>"></script>
-	
-	<!-- page specific plugin scripts -->
-	<script src="<c:url value='/template/admin/assets/js/jquery-ui.min.js'/>"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+	<script src="<c:url value='/template/admin/js/scripts.js'/>"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script src="<c:url value='/template/admin/assets/demo/datatables-demo.js'/>"></script>
 </body>
+
 </html>
