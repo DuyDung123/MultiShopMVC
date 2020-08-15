@@ -1,3 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- thư viên hỗ trợ jsp -->
-<%@ taglib prefix="dec" uri="http://www.opensymphony.com/sitemesh/decorator"%> <!-- thư viện hỗ trợ phục vụ việc thay đổi body dùng cái này khai báo ở pom.xml-->
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<!-- trong phần này chúng ta sẽ khai báo tất cả cái library mà chúng ta sử dụng cho thằng jsp -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="dec" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%> --%>
+<!-- các thư viện này được khai báo ở file pom.xml -->
