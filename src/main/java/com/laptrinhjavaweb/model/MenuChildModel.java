@@ -5,6 +5,7 @@ public class MenuChildModel extends AbstractModel<MenuChildModel> {
 	private String name;
 	private String code;
 	private Long dadId;
+	private MenuDadModel menuDad;
 	
 	public String getName() {
 		return name;
@@ -29,5 +30,15 @@ public class MenuChildModel extends AbstractModel<MenuChildModel> {
 	public void setDadId(Long dadId) {
 		this.dadId = dadId;
 	}
+
+	public MenuDadModel getMenuDad() {
+		return menuDad;
+	}
+
+	public void setMenuDad(MenuDadModel menuDad) {
+		this.menuDad = menuDad;
+	}
+	
+	
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.laptrinhjavaweb.model.MenuDadModel;
+import com.laptrinhjavaweb.service.IMenuChildService;
 import com.laptrinhjavaweb.service.IMenuDadService;
 
 @Controller(value = "homeControllerOfWeb")
@@ -14,6 +15,9 @@ public class HomeController {
 
 	@Autowired
 	IMenuDadService menuDadService;
+	
+	@Autowired
+	IMenuChildService menuChildService;
 	
 	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage() {
