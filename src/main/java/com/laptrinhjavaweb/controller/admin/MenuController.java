@@ -34,6 +34,14 @@ public class MenuController {
 		mav.addObject("model",menuDadModel);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/admin/menu/test", method = RequestMethod.GET)
+	public ModelAndView test(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
+		ModelAndView mav = new ModelAndView("login");
+		mav.addObject("model",menuDadModel);
+		return mav;
+	}
+	
 	@RequestMapping(value = "/admin/menu/update", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
 		String view = "";

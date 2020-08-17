@@ -10,8 +10,8 @@
        <pattern>/admin*</pattern> <!--  tương tự như trang chủ -->
     </decorator>
     
-<!--     <decorator name="login" page="login.jsp">
-        <pattern>/dang-nhap</pattern>
-    </decorator> -->
+	<decorator name="login" page="login.jsp">
+        <pattern>/admin/menu/test</pattern>
+    </decorator>
 <!-- nhớ khai báo taglib.jsp ở forder common nó là thư viện chung cho decorators -->
 </decorators>
