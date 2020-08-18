@@ -21,10 +21,10 @@
 					DataTable Menu
 					<div class="float-right">
 						<button class="btn btn-primary addMenu" data-toggle="modal" data-target="#addMenu"
-							href="/MultiShop/admin/menu/test" data-load-url="/admin/menu/test" title='Thêm menu'><i
+							href="/MultiShop/admin/N/menu/edit" title='Thêm menu'><i
 								class="fas fa-plus-circle"></i></button>
-						<a class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" title='xóa menu'><i
-								class="fas fa-trash-alt"></i></a>
+						<button type="submit" class="btn btn-primary" id="#btnDelete" title='xóa menu'><i
+								class="fas fa-trash-alt"></i></button>
 					</div>
 				</div>
 				<div class="card-body">
@@ -51,12 +51,13 @@
 										<td>${item.name}</td>
 										<td>${item.code}</td>
 										<td>
-											<c:url var="editURL" value="/admin/menu/edit">
+											<c:url var="editURL" value="/admin/N/menu/edit">
 												<c:param name="id" value="${item.id}" />
 											</c:url>
-											<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-												title="Cập nhật menu" href='${editURL}'><i
-													class="fas fa-pencil-alt"></i> </a>
+											<a class="btn btn-primary addMenu btn-edit" data-toggle="modal"
+												data-target="#addMenu" href='${editURL}'
+												title='Cập nhật menu'><i class="fas fa-pencil-alt"></i>
+										</a>
 										</td>
 									</tr>
 								</c:forEach>
@@ -73,17 +74,12 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 					...
-				</div>
-				<div class="modal-footer">
-					<button type="button addMenu" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
 				</div>
 			</div>
 		</div>

@@ -11,21 +11,22 @@ import com.laptrinhjavaweb.entity.MenuDadEntity;
 import com.laptrinhjavaweb.model.MenuDadModel;
 import com.laptrinhjavaweb.repository.MenuDadRepository;
 import com.laptrinhjavaweb.service.IMenuDadService;
+import com.laptrinhjavaweb.utils.CustomUtils;
 
 @Service
-public class MenuDadService implements IMenuDadService{
+public class MenuDadService implements IMenuDadService {
 
 	@Autowired
 	MenuDadRepository dadRepository;
-	
+
 	@Autowired
 	MenuDadConverter menuDadConverter;
-	
+
 	@Override
 	public List<MenuDadModel> findAll() {
 		List<MenuDadModel> menuDadModel = new ArrayList<>();
 		List<MenuDadEntity> dadEntities = dadRepository.findAll();
-		for(MenuDadEntity item : dadEntities) {
+		for (MenuDadEntity item : dadEntities) {
 			menuDadModel.add(menuDadConverter.toModel(item));
 		}
 		return menuDadModel;
@@ -40,14 +41,22 @@ public class MenuDadService implements IMenuDadService{
 	@Override
 	public MenuDadModel save(MenuDadModel menuDadModel) {
 		MenuDadEntity dadEntity = new MenuDadEntity();
-		if(menuDadModel.getId() != null) {
+		menuDadModel.setCode(CustomUtils.customCode(menuDadModel.getName()));
+		if (menuDadModel.getId() != null) {
 			MenuDadEntity lodDadEntity = dadRepository.findOne(menuDadModel.getId());
 			dadEntity = menuDadConverter.toEntity(menuDadModel, lodDadEntity);
-		}else {
+		} else {
 			dadEntity = menuDadConverter.toEntity(menuDadModel);
 		}
 		dadEntity = dadRepository.save(dadEntity);
 		return menuDadConverter.toModel(dadEntity);
 	}
-
+	
+	@Override
+	public void delete(long[] ids) {
+		for(long item:ids) {
+			dadRepository.delete(item);
+		}	
+	}
+		
 }
