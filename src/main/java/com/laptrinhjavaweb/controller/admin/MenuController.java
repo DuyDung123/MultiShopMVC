@@ -15,46 +15,48 @@ public class MenuController {
 
 	@Autowired
 	IMenuDadService menuDadService;
-	
+
 	@RequestMapping(value = "/admin/menu/list", method = RequestMethod.GET)
 	public ModelAndView showList() {
 		MenuDadModel menuDadModel = new MenuDadModel();
 		menuDadModel.setListResult(menuDadService.findAll());
 		ModelAndView mav = new ModelAndView("admin/menu/list");
-		mav.addObject("model",menuDadModel);
+		mav.addObject("model", menuDadModel);
 		return mav;
 	}
-	
-	@RequestMapping(value = "/admin/menu/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
-		if(menuDadModel.getId() !=null) {
+
+	@RequestMapping(value = "/admin/N/menu/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@ModelAttribute(("model")) MenuDadModel menuDadModel) {
+		if (menuDadModel.getId() != null) {
 			menuDadModel = menuDadService.findOne(menuDadModel.getId());
 		}
 		ModelAndView mav = new ModelAndView("admin/menu/edit");
-		mav.addObject("model",menuDadModel);
+		mav.addObject("model", menuDadModel);
 		return mav;
 	}
-	
-	@RequestMapping(value = "/admin/menu/test", method = RequestMethod.GET)
-	public ModelAndView test(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
-		ModelAndView mav = new ModelAndView("login");
-		mav.addObject("model",menuDadModel);
-		return mav;
-	}
-	
+
 	@RequestMapping(value = "/admin/menu/update", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute(("model"))MenuDadModel menuDadModel) {
+	public ModelAndView save(@ModelAttribute(("model")) MenuDadModel menuDadModel) {
 		String view = "";
-			menuDadModel = menuDadService.save(menuDadModel);
-			if(menuDadModel.getId() != null) {
-				menuDadModel = menuDadService.findOne(menuDadModel.getId());
-				view = "admin/menu/edit";
-			}else if(menuDadModel.getId() == null) {
+		if(menuDadModel.getId() == null) {
+			if(menuDadModel.getName() != null) {
+				menuDadService.save(menuDadModel);
+				menuDadModel.setListResult(menuDadService.findAll());
+				view = "admin/menu/list";
+			}else {
 				menuDadModel.setListResult(menuDadService.findAll());
 				view = "admin/menu/list";
 			}
+		}else if (menuDadModel.getId() != null && menuDadModel.getName() != null) {
+			menuDadService.save(menuDadModel);
+			menuDadModel.setListResult(menuDadService.findAll());
+			view = "admin/menu/list";
+		}else {
+			view = "admin/menu/list";
+		}
 		ModelAndView mav = new ModelAndView(view);
-		mav.addObject("model",menuDadModel);
+		mav.addObject("model", menuDadModel);
 		return mav;
 	}
+	
 }
