@@ -21,7 +21,7 @@
 					DataTable Menu
 					<div class="float-right">
 						<button class="btn btn-primary addMenu" data-toggle="modal" data-target="#addMenu"
-							href="/MultiShop/admin/N/menu/edit" title='Thêm menu'><i
+							href='<c:url value="/admin/N/menu/edit"/>' title='Thêm menu'><i
 								class="fas fa-plus-circle"></i></button>
 						<button type="submit" class="btn btn-primary" id="#btnDelete" title='xóa menu'><i
 								class="fas fa-trash-alt"></i></button>
