@@ -1,6 +1,6 @@
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-new" />
-<c:url var="NewURL" value="/admin-new" />
+<c:url var="APIurl" value='/api/menu'/>
+<c:url var="MenuURL" value='/admin/menu/list'/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,8 +23,13 @@
 						<button class="btn btn-primary addMenu" data-toggle="modal" data-target="#addMenu"
 							href='<c:url value="/admin/N/menu/edit"/>' title='Thêm menu'><i
 								class="fas fa-plus-circle"></i></button>
-						<button type="submit" class="btn btn-primary" id="#btnDelete" title='xóa menu'><i
-								class="fas fa-trash-alt"></i></button>
+						<button id="btnDelete" type="button"
+							class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip"
+							title='Xóa bài viết'>
+							<span>
+								<i class="fas fa-trash-alt"></i>
+							</span>
+						</button>
 					</div>
 				</div>
 				<div class="card-body">
@@ -55,9 +60,9 @@
 												<c:param name="id" value="${item.id}" />
 											</c:url>
 											<a class="btn btn-primary addMenu btn-edit" data-toggle="modal"
-												data-target="#addMenu" href='${editURL}'
-												title='Cập nhật menu'><i class="fas fa-pencil-alt"></i>
-										</a>
+												data-target="#addMenu" href='${editURL}' title='Cập nhật menu'><i
+													class="fas fa-pencil-alt"></i>
+											</a>
 										</td>
 									</tr>
 								</c:forEach>
@@ -84,6 +89,34 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		 $("#btnDelete").click(function () {
+				var data = {};
+				var ids = $('tbody input[type=checkbox]:checked').map(function () {
+					return $(this).val();
+				}).get();
+				data = ids;
+				console.log(data);
+				deleteNew(data);
+				var url = '${APIurl}';
+				console.log(url);
+			});
+
+			function deleteNew(data) {
+				$.ajax({
+					url: '${APIurl}',
+					type: 'DELETE',
+					contentType: 'application/json',
+					data: JSON.stringify(data),
+					success: function (result) {
+						window.location.href = "${MenuURL}";
+					},
+					error: function (error) {
+						window.location.href = "${MenuURL}";
+					}
+				});
+			}
+	</script>
 </body>
 
 </html>

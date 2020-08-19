@@ -35,7 +35,6 @@ public class MenuDadConverter implements IConvert<MenuDadModel, MenuDadEntity> {
 			dadModel.setCreatedBy(entity.getCreatedBy());
 			dadModel.setModifiedDate(entity.getModifiedDate());
 			dadModel.setModifiedBy(entity.getModifiedBy());
-			dadModel.setMenuChilds(entity.getMenuChilds());
 		return dadModel;
 	}
 	
