@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.laptrinhjavaweb.model.MenuDadModel;
@@ -59,4 +60,10 @@ public class MenuController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/admin/menu", method = RequestMethod.DELETE)
+	public ModelAndView delete() {
+		ModelAndView mav = new ModelAndView("admin/menu/list");
+		return mav;
+	}
+
 }
