@@ -13,6 +13,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 	<link href="<c:url value='/template/admin/css/styles.css'/>" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link href="<c:url value='/template/admin/css/menu.css'/>"  rel="stylesheet"/>
 	<%--     <script src="<c:url value='/template/admin/paging/jquery.twbsPagination.js'/>"></script> --%>
 	<%--     <script src="<c:url value='/ckeditor/ckeditor.js' />"></script> --%>
 </head>
@@ -40,6 +41,7 @@
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 	<script src="<c:url value='/template/admin/assets/demo/datatables-demo.js'/>"></script>
+	<script src="<c:url value='/template/admin/assets/js/menu.js'/>"></script>
 </body>
 
 </html>

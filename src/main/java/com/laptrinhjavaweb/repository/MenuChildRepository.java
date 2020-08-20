@@ -13,4 +13,6 @@ public interface MenuChildRepository extends JpaRepository<MenuChildEntity, Long
 	@Query(value = "select * from menudad as dad inner join menuchild as child on dad.id = child.menudadid where dad.id = 1",nativeQuery = true)
 	List<MenuChildEntity> findAllByDadid();
 	
+	MenuChildEntity findOneByCode(String code);
+	
 }

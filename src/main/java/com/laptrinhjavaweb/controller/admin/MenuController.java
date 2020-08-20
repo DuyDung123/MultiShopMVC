@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.laptrinhjavaweb.model.MenuChildModel;
 import com.laptrinhjavaweb.model.MenuDadModel;
+import com.laptrinhjavaweb.service.IMenuChildService;
 import com.laptrinhjavaweb.service.IMenuDadService;
 
 @Controller(value = "menuControllerOfAdmin")
@@ -15,13 +17,19 @@ public class MenuController {
 
 	@Autowired
 	IMenuDadService menuDadService;
+	
+	@Autowired
+	IMenuChildService menuChildService;
 
 	@RequestMapping(value = "/admin/menu/list", method = RequestMethod.GET)
 	public ModelAndView showList() {
 		MenuDadModel menuDadModel = new MenuDadModel();
+		MenuChildModel menuchildModel = new MenuChildModel();
 		menuDadModel.setListResult(menuDadService.findAll());
-		ModelAndView mav = new ModelAndView("admin/menu/list");
-		mav.addObject("model", menuDadModel);
+		menuchildModel.setListResult(menuChildService.findAll());
+		ModelAndView mav = new ModelAndView("admin/menu/menu");
+		mav.addObject("modelDad", menuDadModel);
+		mav.addObject("modelChild", menuchildModel);
 		return mav;
 	}
 

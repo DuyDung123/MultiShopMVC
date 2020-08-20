@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.laptrinhjavaweb.converter.MenuChildConverter;
 import com.laptrinhjavaweb.converter.MenuDadConverter;
 import com.laptrinhjavaweb.entity.MenuDadEntity;
 import com.laptrinhjavaweb.model.MenuDadModel;
@@ -21,6 +22,9 @@ public class MenuDadService implements IMenuDadService {
 
 	@Autowired
 	MenuDadConverter menuDadConverter;
+	
+	@Autowired
+	MenuChildConverter menuChildConverter;
 
 	@Override
 	public List<MenuDadModel> findAll() {
