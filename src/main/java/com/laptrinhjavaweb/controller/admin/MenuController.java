@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.laptrinhjavaweb.model.MenuDadModel;
@@ -37,32 +36,11 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/admin/menu/update", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute(("model")) MenuDadModel menuDadModel) {
-		String view = "";
-		if(menuDadModel.getId() == null) {
-			if(menuDadModel.getName() != null) {
-				menuDadService.save(menuDadModel);
-				menuDadModel.setListResult(menuDadService.findAll());
-				view = "admin/menu/list";
-			}else {
-				menuDadModel.setListResult(menuDadService.findAll());
-				view = "admin/menu/list";
-			}
-		}else if (menuDadModel.getId() != null && menuDadModel.getName() != null) {
-			menuDadService.save(menuDadModel);
-			menuDadModel.setListResult(menuDadService.findAll());
-			view = "admin/menu/list";
-		}else {
-			view = "admin/menu/list";
-		}
-		ModelAndView mav = new ModelAndView(view);
+	public ModelAndView saves(@ModelAttribute(("model")) MenuDadModel menuDadModel) {
+		menuDadService.save(menuDadModel);
+		menuDadModel.setListResult(menuDadService.findAll());
+		ModelAndView mav = new ModelAndView("redirect:" + "list");
 		mav.addObject("model", menuDadModel);
-		return mav;
-	}
-	
-	@RequestMapping(value = "/admin/menu", method = RequestMethod.DELETE)
-	public ModelAndView delete() {
-		ModelAndView mav = new ModelAndView("admin/menu/list");
 		return mav;
 	}
 
