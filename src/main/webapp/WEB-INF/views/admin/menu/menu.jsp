@@ -18,9 +18,11 @@
                     <th>
                         <div class="float-left">Danh Sách menu</div>
                         <div class="float-right">
+                            <c:url var="editURL" value="/admin/N/menu/edit">
+                                <c:param name="type" value="dad" />
+                            </c:url>
                             <button class="btn btn-primary addMenu" data-toggle="modal" data-target="#addMenu"
-                                href='<c:url value="/admin/N/menu/edit"/>' title='Thêm menu'><i
-                                    class="fas fa-plus-circle"></i></button>
+                                href='${editURL}' title='Thêm menu'><i class="fas fa-plus-circle"></i></button>
                         </div>
                     </th>
                     </tr>
@@ -34,11 +36,18 @@
                                         id="myBtn">${itemDad.name}</button>
                                     <div class="action">
                                         <div class="toasts-header">
+                                            <c:url var="addChild" value="/admin/N/menu/edit">
+                                                <c:param name="type" value="child" />
+                                                <c:param name="dadId" value="${itemDad.id}" />
+                                            </c:url>
                                             <c:url var="editURL" value="/admin/N/menu/edit">
                                                 <c:param name="id" value="${itemDad.id}" />
+                                                <c:param name="type" value="dad" />
                                             </c:url>
-                                            <a><i class="icon-rotate fas fa-plus-circle ml-2 mr-2"
-                                                    aria-hidden="true"></i></a>
+                                            <a class="addMenu btn-edit" data-toggle="modal" data-target="#addMenu"
+                                                href='${addChild}' title='thêm menu con'>
+                                                <i class="icon-rotate fas fa-plus-circle ml-2 mr-2"></i>
+                                            </a>
                                             <a class="addMenu btn-edit" data-toggle="modal" data-target="#addMenu"
                                                 href='${editURL}' title='Cập nhật menu'><i
                                                     class="icon-rotate fas fa-pencil-alt mr-2"></i>
@@ -55,7 +64,15 @@
                                                     id="myBtn">${item.name}</button>
                                                 <div class="action">
                                                     <div class="toasts-header">
-                                                        <a><i class="icon-rotate fas fa-pencil-alt ml-2 mr-2"
+                                                        <c:url var="editURL" value="/admin/N/menu/edit">
+                                                            <c:param name="id" value="${item.id}" />
+                                                            <c:param name="type" value="child" />
+                                                            <c:param name="dadId" value="${itemDad.id}" />
+                                                        </c:url>
+                                                        <a class="addMenu btn-edit" data-toggle="modal"
+                                                            data-target="#addMenu" href='${editURL}'
+                                                            title='Cập nhật menu'><i
+                                                                class="icon-rotate fas fa-pencil-alt ml-2 mr-2"
                                                                 aria-hidden="true"></i></a>
                                                         <a><i class="icon-rotate fas fa-trash-alt mr-2"
                                                                 aria-hidden="true"></i></a>
@@ -68,31 +85,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                    <!-- <tr>
-                        <td>
-                            <div class="bcc ">
-                                <button type="button" class="btn btn-primary menudad" id="myBtn">máy tính</button>
-                                <div class="action">
-                                    <div class="toasts-header">
-                                        <a><i class="icon-rotate fas fa-plus-circle ml-2 mr-2" aria-hidden="true"></i></a>
-                                        <a><i class="icon-rotate fas fa-pencil-alt mr-2" aria-hidden="true"></i></a>
-                                        <a><i class="icon-rotate fas fa-trash-alt mr-2" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ml-5 rounded border fame-item-menudad">
-                                <div class="bcc ml-3 mr-5 mb-3">
-                                    <button type="button" class="btn btn-primary menudad" id="myBtn">asus</button>
-                                    <div class="action">
-                                        <div class="toasts-header">
-                                            <a><i class="icon-rotate fas fa-pencil-alt ml-2 mr-2" aria-hidden="true"></i></a>
-                                            <a><i class="icon-rotate fas fa-trash-alt mr-2" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>

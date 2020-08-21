@@ -17,7 +17,7 @@ public class MenuController {
 
 	@Autowired
 	IMenuDadService menuDadService;
-	
+
 	@Autowired
 	IMenuChildService menuChildService;
 
@@ -34,21 +34,30 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/admin/N/menu/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@ModelAttribute(("model")) MenuDadModel menuDadModel) {
-		if (menuDadModel.getId() != null) {
-			menuDadModel = menuDadService.findOne(menuDadModel.getId());
-		}
+	public ModelAndView edit(@ModelAttribute(("model")) MenuDadModel menuDadModel, MenuChildModel menuchildModel) {
+		String type = menuDadModel.getType();
+		Long dadId = (menuchildModel.getDadId());
 		ModelAndView mav = new ModelAndView("admin/menu/edit");
-		mav.addObject("model", menuDadModel);
+		if (menuDadModel.getType().equals("dad") && menuDadModel.getId() != null) {
+			menuDadModel = menuDadService.findOne(menuDadModel.getId());
+			mav.addObject("model", menuDadModel);
+		} else if (menuchildModel.getType().equals("child") && menuchildModel.getId() != null) {
+			menuchildModel = menuChildService.findOne(menuDadModel.getId());
+			mav.addObject("model", menuchildModel);
+		}
+		mav.addObject("type", type);
+		mav.addObject("dadId", dadId);
 		return mav;
 	}
 
 	@RequestMapping(value = "/admin/menu/update", method = RequestMethod.POST)
-	public ModelAndView saves(@ModelAttribute(("model")) MenuDadModel menuDadModel) {
-		menuDadService.save(menuDadModel);
-		menuDadModel.setListResult(menuDadService.findAll());
+	public ModelAndView saves(@ModelAttribute(("model")) MenuDadModel menuDadModel, MenuChildModel menuchildModel) {
+		if (menuDadModel.getType().equals("dad")) {
+			menuDadService.save(menuDadModel);
+		} else if (menuchildModel.getType().equals("child")) {
+			menuChildService.save(menuchildModel);
+		}
 		ModelAndView mav = new ModelAndView("redirect:" + "list");
-		mav.addObject("model", menuDadModel);
 		return mav;
 	}
 

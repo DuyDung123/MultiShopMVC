@@ -13,10 +13,10 @@
 			<div class="breadcrumbs" id="breadcrumbs">
 				<ul class="breadcrumb">
 					<c:if test="${not empty model.id}">
-						<li class="active">Chỉnh sửa menu</li>
+						<li class="active">Chỉnh sửa menu ${type}</li>
 					</c:if>
 					<c:if test="${empty model.id}">
-						<li class="active">thêm menu</li>
+						<li class="active">thêm menu ${type}</li>
 					</c:if>
 				</ul>
 				<!-- /.breadcrumb -->
@@ -34,6 +34,8 @@
 						</div>
 						<br />
 						<input type="hidden" value="${model.id}" id="id" name="id" />
+						<input type="hidden" value="${type}" id="type" name="type" />
+						<input type="hidden" value="${dadId}" id="dadId" name="dadId" />
 						<div class="form-group">
 							<div class="col-sm-12">
 								<c:if test="${not empty model.id}">
