@@ -51,11 +51,22 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/admin/menu/update", method = RequestMethod.POST)
-	public ModelAndView saves(@ModelAttribute(("model")) MenuDadModel menuDadModel, MenuChildModel menuchildModel) {
+	public ModelAndView save(@ModelAttribute(("model")) MenuDadModel menuDadModel, MenuChildModel menuchildModel) {
 		if (menuDadModel.getType().equals("dad")) {
 			menuDadService.save(menuDadModel);
 		} else if (menuchildModel.getType().equals("child")) {
 			menuChildService.save(menuchildModel);
+		}
+		ModelAndView mav = new ModelAndView("redirect:" + "list");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin/menu/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@ModelAttribute(("model")) MenuDadModel menuDadModel, MenuChildModel menuchildModel) {
+		if (menuDadModel.getType().equals("dad")) {
+			menuDadService.delete(menuDadModel.getIds());
+		} else if (menuchildModel.getType().equals("child")) {
+			menuChildService.delete(menuchildModel.getIds());
 		}
 		ModelAndView mav = new ModelAndView("redirect:" + "list");
 		return mav;
