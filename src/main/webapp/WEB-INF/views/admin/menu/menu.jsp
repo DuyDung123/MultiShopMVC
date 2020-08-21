@@ -44,6 +44,10 @@
                                                 <c:param name="id" value="${itemDad.id}" />
                                                 <c:param name="type" value="dad" />
                                             </c:url>
+                                            <c:url var="delDad" value="/admin/menu/delete">
+                                                <c:param name="ids" value="${itemDad.id}" />
+                                                <c:param name="type" value="dad" />
+                                            </c:url>
                                             <a class="addMenu btn-edit" data-toggle="modal" data-target="#addMenu"
                                                 href='${addChild}' title='thêm menu con'>
                                                 <i class="icon-rotate fas fa-plus-circle ml-2 mr-2"></i>
@@ -52,7 +56,7 @@
                                                 href='${editURL}' title='Cập nhật menu'><i
                                                     class="icon-rotate fas fa-pencil-alt mr-2"></i>
                                             </a>
-                                            <a><i class="icon-rotate fas fa-trash-alt mr-2" aria-hidden="true"></i></a>
+                                            <a  href='${delDad}'><i class="icon-rotate fas fa-trash-alt mr-2" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -69,12 +73,16 @@
                                                             <c:param name="type" value="child" />
                                                             <c:param name="dadId" value="${itemDad.id}" />
                                                         </c:url>
+                                                        <c:url var="delChild" value="/admin/menu/delete">
+                                                            <c:param name="ids" value="${item.id}" />
+                                                            <c:param name="type" value="child" />
+                                                        </c:url>
                                                         <a class="addMenu btn-edit" data-toggle="modal"
                                                             data-target="#addMenu" href='${editURL}'
                                                             title='Cập nhật menu'><i
                                                                 class="icon-rotate fas fa-pencil-alt ml-2 mr-2"
                                                                 aria-hidden="true"></i></a>
-                                                        <a><i class="icon-rotate fas fa-trash-alt mr-2"
+                                                        <a href='${delChild}'><i class="icon-rotate fas fa-trash-alt mr-2"
                                                                 aria-hidden="true"></i></a>
                                                     </div>
                                                 </div>

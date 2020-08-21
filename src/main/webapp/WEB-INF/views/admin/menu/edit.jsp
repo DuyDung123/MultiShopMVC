@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<form id="formSubmit" action="<c:url value="/admin/menu/update"/>"
-						method="post">
+						method="POST">
 						<div class="ml-2 input-group" style="padding-left: 3px;">
 							<div class="input-group-prepend">
 								<span class="input-group-text">tên menu</span>
