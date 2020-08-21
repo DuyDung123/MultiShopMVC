@@ -54,6 +54,8 @@ public class MenuChildService implements IMenuChildService{
 		} else {
 			childEntities = menuChildConverter.toEntity(menuChildModel);
 		}
+		MenuDadEntity dadEntity = menuDadRepository.findOne(menuChildModel.getDadId());
+		childEntities.setMenuDad(dadEntity);
 		childEntities = menuChildRepository.save(childEntities);
 		return menuChildConverter.toModel(childEntities);
 	}
