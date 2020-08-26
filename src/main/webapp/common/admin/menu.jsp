@@ -16,7 +16,7 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="<c:url value='/admin/menu/list'></c:url>">Menu</a>
-                        <a class="nav-link" href="#">Product</a>
+                        <a class="nav-link" href="<c:url value='/admin/product/list'></c:url>">Product</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
