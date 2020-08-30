@@ -6,10 +6,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>List product</title>
 </head>
 
 <body>
+    <style>
+        td.text-center {
+            width: 10%;
+        }
+
+        img.imgitem {
+            width: 100%;
+        }
+    </style>
     <main>
         <div class="container-fluid">
             <div class="card mb-4">
@@ -34,7 +43,8 @@
                                 <c:forEach var="item" items="${model.listResult}">
                                     <tr>
                                         <td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
-                                        <td>${item.image}</td>
+                                        <td class="text-center"><img src="<c:url value='${item.image}'/>"
+                                                class="imgitem" alt=""></td>
                                         <td>${item.name}</td>
                                         <td>${item.quantity}</td>
                                         <td>${item.active}</td>
@@ -57,6 +67,26 @@
             </div>
         </div>
     </main>
+    <script>
+        var chekbox = $('tbody input[type=checkbox]');
+        var checkAll = true;
+        $('#checkAll').change(function () {
+            if (checkAll === true) {
+                for (let i = 0; i < chekbox.length; i++) {
+                    const element = chekbox[i];
+                    element.checked = true;
+                }
+                checkAll = false;
+            }
+            else {
+                for (let i = 0; i < chekbox.length; i++) {
+                    const element = chekbox[i];
+                    element.checked = false;
+                }
+                checkAll = true;
+            }
+        });
+    </script>
 </body>
 
 </html>
