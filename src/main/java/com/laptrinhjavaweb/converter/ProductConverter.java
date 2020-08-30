@@ -12,6 +12,7 @@ public class ProductConverter implements IConvert<ProductModel, ProductEntity>{
 	public ProductEntity toEntity(ProductModel model) {
 		ProductEntity entity = new ProductEntity();
 		entity.setName(model.getName());
+		entity.setImage(model.getImage());
 		entity.setInfoDetail(model.getInfoDetail());
 		entity.setPromotionProduct(model.getPromotionProduct());
 		entity.setHotProduct(model.getHotProduct());
@@ -24,6 +25,7 @@ public class ProductConverter implements IConvert<ProductModel, ProductEntity>{
 
 	@Override
 	public ProductEntity toEntity(ProductModel model, ProductEntity entity) {
+		entity.setImage(model.getImage());
 		entity.setName(model.getName());
 		entity.setInfoDetail(model.getInfoDetail());
 		entity.setPromotionProduct(model.getPromotionProduct());
@@ -41,6 +43,7 @@ public class ProductConverter implements IConvert<ProductModel, ProductEntity>{
 		if(entity.getId() != null) {
 			model.setId(entity.getId());
 		}
+		model.setImage(entity.getImage());
 		model.setName(entity.getName());
 		model.setInfoDetail(entity.getInfoDetail());
 		model.setPromotionProduct(entity.getPromotionProduct());
