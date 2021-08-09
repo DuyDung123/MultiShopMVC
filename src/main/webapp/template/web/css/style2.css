@@ -1,0 +1,43 @@
+	.title{
+		position: relative;
+    	padding-top: 10px;
+	}
+	.title p {
+    	border-top: 1px solid #000;
+    	margin: 2px 0;
+	}
+	.title span{
+		position: absolute;
+    	top: 0;
+    	left: 45%;
+    	padding: 0 20px;
+    	background: #fff;
+    	font-size: 25px;
+    	text-transform: uppercase;
+    	font-family: "Times New Roman",Georgia,Serif;
+	}
+	
+	.w3l_fresh_vegetables_grid2 ul li ul {
+		padding: 0 1em;
+	}
+	
+	li.title_item_menu {
+    	background: #ec1043;
+    	text-transform: uppercase;
+	}
+	li.sub_title_item_menu{
+		text-transform: uppercase;
+	}
+	span.number_item_menu {
+    	font-size: 27px;
+    	padding-left: 5%;
+    	background: #ce5454;
+    	padding-right: 5%;
+ }
+
+	a.link_menu {}
+
+	span.content_title_menu {
+    	font-size: 27px !important;
+    	padding-left: 30px;
+	}

@@ -14,7 +14,7 @@ import com.laptrinhjavaweb.service.IMenuDadService;
 
 
 
-@RestController(value = "newAPIOfAdmin")
+@RestController(value = "menuAPIOfAdmin")
 public class MenuAPI {
 	
 	@Autowired

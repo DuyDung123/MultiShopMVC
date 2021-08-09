@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.laptrinhjavaweb.converter.MenuChildConverter;
 import com.laptrinhjavaweb.converter.MenuDadConverter;
+import com.laptrinhjavaweb.entity.MenuChildEntity;
 import com.laptrinhjavaweb.entity.MenuDadEntity;
 import com.laptrinhjavaweb.model.MenuDadModel;
+import com.laptrinhjavaweb.repository.MenuChildRepository;
 import com.laptrinhjavaweb.repository.MenuDadRepository;
+import com.laptrinhjavaweb.repository.ProductRepository;
 import com.laptrinhjavaweb.service.IMenuDadService;
 import com.laptrinhjavaweb.utils.CustomUtils;
 
@@ -24,7 +26,10 @@ public class MenuDadService implements IMenuDadService {
 	MenuDadConverter menuDadConverter;
 	
 	@Autowired
-	MenuChildConverter menuChildConverter;
+	MenuChildRepository menuChildRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
 
 	@Override
 	public List<MenuDadModel> findAll() {
@@ -58,8 +63,13 @@ public class MenuDadService implements IMenuDadService {
 	
 	@Override
 	public void delete(long[] ids) {
-		for(long item:ids) {
-			dadRepository.delete(item);
+		for(long id:ids) {
+			List<MenuChildEntity> childEntity = menuChildRepository.findByDadid(id);
+			for(MenuChildEntity item : childEntity) {
+				productRepository.deleteByMenuchild(item.getId());
+				menuChildRepository.delete(item.getId());
+			}
+			dadRepository.delete(id);
 		}	
 	}
 		
