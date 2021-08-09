@@ -12,6 +12,7 @@ import com.laptrinhjavaweb.entity.MenuDadEntity;
 import com.laptrinhjavaweb.model.MenuChildModel;
 import com.laptrinhjavaweb.repository.MenuChildRepository;
 import com.laptrinhjavaweb.repository.MenuDadRepository;
+import com.laptrinhjavaweb.repository.ProductRepository;
 import com.laptrinhjavaweb.service.IMenuChildService;
 import com.laptrinhjavaweb.utils.CustomUtils;
 
@@ -19,21 +20,23 @@ import com.laptrinhjavaweb.utils.CustomUtils;
 public class MenuChildService implements IMenuChildService{
 
 	@Autowired
-	MenuChildRepository menuChildRepository;
+	private MenuChildRepository menuChildRepository;
 	
 	@Autowired
-	MenuDadRepository menuDadRepository;
+	private MenuDadRepository menuDadRepository;
 	
 	@Autowired
-	MenuChildConverter menuChildConverter;
+	private MenuChildConverter menuChildConverter;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Override
 	public List<MenuChildModel> findAll() {
 		List<MenuChildModel> childModel = new ArrayList<>();
 		List<MenuChildEntity> childEntities = menuChildRepository.findAll();
 		for (MenuChildEntity item : childEntities) {
-			MenuDadEntity dadEntity = menuDadRepository.findOne(item.getMenuDad().getId());
-			childModel.add(menuChildConverter.toModel(item, dadEntity));
+			childModel.add(menuChildConverter.toModel(item));
 		}
 		return childModel;
 	}
@@ -63,6 +66,7 @@ public class MenuChildService implements IMenuChildService{
 	@Override
 	public void delete(long[] ids) {
 		for(long id:ids) {
+			productRepository.deleteByMenuchild(id);
 			menuChildRepository.delete(id);
 		}
 	}

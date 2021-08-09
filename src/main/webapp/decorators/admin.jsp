@@ -14,8 +14,8 @@
 	<link href="<c:url value='/template/admin/css/styles.css'/>" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<link href="<c:url value='/template/admin/css/menu.css'/>"  rel="stylesheet"/>
-	<%--     <script src="<c:url value='/template/admin/paging/jquery.twbsPagination.js'/>"></script> --%>
-	<%--     <script src="<c:url value='/ckeditor/ckeditor.js' />"></script> --%>
+	<script src="<c:url value='/template/admin/paging/jquery.twbsPagination.js'/>"></script>
+	<script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
 </head>
 
 <body class="sb-nav-fixed">

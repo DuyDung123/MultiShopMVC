@@ -52,6 +52,7 @@ public class ProductConverter implements IConvert<ProductModel, ProductEntity>{
 		model.setQuantity(entity.getQuantity());
 		model.setInitialPrice(entity.getInitialPrice());
 		model.setCurrentPrice(entity.getCurrentPrice());
+		model.setMenuchild(entity.getMenuChild().getId());
 		return model;
 	}
 

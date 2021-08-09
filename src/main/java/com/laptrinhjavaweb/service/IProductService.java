@@ -10,5 +10,5 @@ public interface IProductService {
 	List<ProductModel> findAll();
 	ProductModel findOne(Long id);
 	ProductModel save(ProductModel productModel);
-	void delete(long[] ids);
+	void delete(Long[] ids);
 }

@@ -1,6 +1,8 @@
 <%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:url var="APIurl" value="/api/product"/>
+<c:url var ="ProductURL" value="/admin/product/list"/>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +26,21 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    DataTable Example
+                    Danh sách sản phẩm
+                    <div class="float-right">
+                    	<a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
+							title='Thêm sản phẩm' href='<c:url value="/admin/product/edit"/>'>
+								<span>
+									<i class="fa fa-plus-circle bigger-110 purple"></i>
+								</span>	
+						</a>
+						<button id="btnDelete" type="button"
+							class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa sản phẩm'>
+								<span>
+									<i class="fas fa-trash-alt"></i>
+								</span>
+						</button>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -49,12 +65,11 @@
                                         <td>${item.quantity}</td>
                                         <td>${item.active}</td>
                                         <td>
-                                            <c:url var="editURL" value="/admin-new">
-                                                <c:param name="type" value="edit" />
+                                            <c:url var="editURL" value="//admin/product/edit">
                                                 <c:param name="id" value="${item.id}" />
                                             </c:url>
                                             <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                title="Cập nhật bài viết" href='${editURL}'><i
+                                                title="Cập nhật sản phẩm" href='${editURL}'><i
                                                     class="fas fa-pencil-alt    "></i>
                                             </a>
                                         </td>
@@ -86,6 +101,31 @@
                 checkAll = true;
             }
         });
+        
+        
+        $("#btnDelete").click(function() {
+			var data = {};
+			var ids = $('tbody input[type=checkbox]:checked').map(function () {
+	            return $(this).val();
+	        }).get();
+			data = ids;
+			deleteProduct(data);
+		});
+        
+        function deleteProduct(data) {
+	        $.ajax({
+	            url: '${APIurl}',
+	            type: 'DELETE',
+	            contentType: 'application/json',
+	            data: JSON.stringify(data),
+	            success: function (result) {
+	                window.location.href = "${ProductURL}?message=delete_success";
+	            },
+	            error: function (error) {
+	            	window.location.href = "${ProductURL}?message=error_system";
+	            }
+	        });
+	    }
     </script>
 </body>
 
